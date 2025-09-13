@@ -1,0 +1,316 @@
+body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* पूर्ण व्यूपोर्ट ऊंचाई */
+            background-color: #f0f2f5; /* हल्का पृष्ठभूमि */
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; /* बॉडी स्क्रॉल को रोकें */
+            transition: background-color 0.3s ease; /* डार्क मोड ट्रांजीशन */
+        }
+
+        /* डार्क मोड स्टाइल */
+        body.dark-mode-active {
+            background-color: #1a202c; /* डार्क पृष्ठभूमि */
+            color: #e2e8f0; /* हल्का टेक्स्ट */
+        }
+
+        .game-container {
+            background-color: #ffffff;
+            border-radius: 20px; /* कंटेनर के लिए गोल कोने */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* नरम छाया */
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 500px; /* रिस्पोंसिवनेस के लिए अधिकतम चौड़ाई */
+            width: 100%; /* अधिकतम चौड़ाई तक पूरी उपलब्ध चौड़ाई लें */
+            position: relative;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* डार्क मोड ट्रांजीशन */
+        }
+
+        body.dark-mode-active .game-container {
+            background-color: #2d3748; /* डार्क मोड में हल्का डार्क रंग */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* डार्क मोड में गहरा छाया */
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr); /* 8x8 ग्रिड कॉलम */
+            grid-template-rows: repeat(8, 1fr);    /* 8x8 ग्रिड पंक्तियाँ */
+            border-radius: 10px;
+            overflow: hidden; /* ऊपर से गिरने वाली कैंडीज और क्लिप-पाथ आकृतियों के लिए ओवरफ्लो छिपाएँ */
+            background-color: #cee; /* ग्रिड क्षेत्र के लिए हल्का पृष्ठभूमि */
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* गहराई के लिए आंतरिक छाया */
+            aspect-ratio: 1 / 1; /* वर्ग पहलू अनुपात बनाए रखें */
+            width: 100%; /* कंटेनर के भीतर ग्रिड को तरल बनाएँ */
+            position: relative; /* ग्रिड के भीतर कैंडीज की निरपेक्ष स्थिति के लिए */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* डार्क मोड ट्रांजीशन */
+        }
+
+        body.dark-mode-active .game-grid {
+            background-color: #4a5568; /* डार्क मोड में ग्रिड पृष्ठभूमि */
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3); /* डार्क मोड में आंतरिक छाया */
+        }
+
+        /* बेस कैंडी स्टाइलिंग - सभी कैंडी प्रकारों के लिए सामान्य गुण */
+        .candy {
+            /* ग्रिड कंटेनर के भीतर कैंडीज को निरपेक्ष स्थिति पर रखें */
+            position: absolute;
+            width: calc(100% / 8); /* 100% / gridSize */
+            height: calc(100% / 8); /* 100% / gridSize */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-sizing: border-box;
+            border: 3px solid transparent; /* चयन हाइलाइट के लिए बॉर्डर */
+            transition: transform 0.4s ease-out, opacity 0.3s ease-out; /* स्वैपिंग और गायब होने के लिए सहज ट्रांजीशन */
+            z-index: 1; /* डिफ़ॉल्ट जेड-इंडेक्स */
+            /* "पॉपिंग आउट" प्रभाव के लिए सामान्य बाहरी छाया */
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+
+        /* विशिष्ट कैंडी प्रकार की स्टाइल - रंग, आकार, और आंतरिक छाया/ग्रेडिएंट */
+        /* लाल कैंडी: वृत्त */
+        .candy-red-circle {
+            border-radius: 50%; /* वृत्ताकार आकार */
+            background: radial-gradient(circle at 30% 30%, #ff8c8c, #ff6b6b); /* लाल ग्रेडिएंट */
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.5), /* आंतरिक हाइलाइट */
+                        inset 0 -5px 10px rgba(0,0,0,0.3); /* गहराई के लिए आंतरिक छाया */
+        }
+        /* नीली कैंडी: वर्ग */
+        .candy-blue-square {
+            border-radius: 5px; /* एक नरम वर्ग के लिए थोड़ा गोल कोने */
+            background: radial-gradient(circle at 30% 30%, #69e7e0, #4ecdc4); /* नीला ग्रेडिएंट */            box-shadow: inset 0 0 10px rgba(255,255,255,0.5),
+                        inset 0 -5px 10px rgba(0,0,0,0.3);
+        }
+        /* हरी कैंडी: हीरा */
+        .candy-green-diamond {
+            /* हीरे के आकार के लिए क्लिप-पाथ का उपयोग करें ताकि ट्रांसफ़ॉर्म विरोध से बचा जा सके */
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            background: radial-gradient(circle at 30% 30%, #98e9d1, #7dcfb6); /* हरा ग्रेडिएंट */
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.5),
+                        inset 0 -5px 10px rgba(0,0,0,0.3);
+        }
+        /* पीली कैंडी: धारीदार */
+        .candy-yellow-striped {
+            border-radius: 50%; /* छवि उदाहरण के अनुसार इसे गोल रखें */
+            background-color: #ffe66d; /* धारियों के लिए बेस रंग */
+            background-image: repeating-linear-gradient(45deg,
+                #ffe66d 0%, #ffe66d 20%, /* पीली धारी */
+                #ffda44 20%, #ffda44 40%  /* गहरी पीली धारी */
+            );
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.5),
+                        inset 0 -5px 10px rgba(0,0,0,0.3);
+        }
+        /* बैंगनी कैंडी: जेलीबीन */
+        .candy-purple-jelly {
+            /* एक सरलीकृत जेलीबीन लुक के लिए अधिक लम्बा अंडाकार */
+            border-radius: 50% / 60% 60% 40% 40%;
+            background: radial-gradient(circle at 30% 30%, #a78da7, #8c728c); /* बैंगनी ग्रेडिएंट */
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.5),
+                        inset 0 -5px 10px rgba(0,0,0,0.3);
+        }
+
+        /* डार्क मोड में कैंडीज के लिए स्टाइल */
+        body.dark-mode-active .candy {
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.4), /* हल्का बाहरी चमक */
+                        inset 0 0 12px rgba(255, 255, 255, 0.7), /* चमकदार आंतरिक हाइलाइट */
+                        inset 0 -6px 12px rgba(0, 0, 0, 0.5); /* गहरी आंतरिक छाया */
+            border: 2px solid rgba(255, 255, 255, 0.3); /* हल्का बॉर्डर */
+        }
+        
+        /* चयन और मैच की स्थिति */
+        .selected {
+            border-color: #007bff; /* चयनित कैंडी के लिए नीला हाइलाइट */
+            transform: scale(1.05); /* चयनित होने पर थोड़ा बड़ा करें */
+            z-index: 2; /* चयनित कैंडी को सामने लाएँ */
+        }
+
+        .matched {
+            opacity: 0; /* मैच की गई कैंडीज को फीका करें */
+            transform: scale(0.1); /* मैच की गई कैंडीज को सिकोड़ें */
+        }
+
+        .score-display {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            transition: color 0.3s ease; /* डार्क मोड ट्रांजीशन */
+        }
+
+        body.dark-mode-active .score-display {
+            color: #e2e8f0; /* डार्क मोड में स्कोर टेक्स्ट रंग */
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode-active .game-info {
+            color: #e2e8f0;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .reset-button, .dark-mode-button, .language-button {
+            background-color: #4CAF50; /* हरा पृष्ठभूमि */
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px; /* बटन के लिए गोल कोने */
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease; /* सहज होवर और सक्रिय प्रभाव */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            align-self: center; /* बटन को केंद्र में रखें */
+            width: fit-content; /* सामग्री के लिए चौड़ाई समायोजित करें */
+        }
+
+        .reset-button:hover, .dark-mode-button:hover, .language-button:hover {
+            background-color: #45a049; /* होवर पर गहरा हरा */
+            transform: translateY(-2px); /* होवर पर थोड़ा ऊपर उठाएँ */
+        }
+
+        .reset-button:active, .dark-mode-button:active, .language-button:active {
+            transform: translateY(0); /* प्रेस प्रभाव */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* सक्रिय होने पर छोटी छाया */
+        }
+
+        /* डार्क मोड बटन के लिए विशिष्ट रंग */
+        .dark-mode-button {
+            background-color: #4299e1; /* नीला रंग */
+        }
+
+        .dark-mode-button:hover {
+            background-color: #3182ce; /* होवर पर गहरा नीला */
+        }
+
+        /* भाषा बटन के लिए विशिष्ट रंग */
+        .language-button {
+            background-color: #ff9800; /* नारंगी रंग */
+        }
+
+        .language-button:hover {
+            background-color: #fb8c00; /* होवर पर गहरा नारंगी */
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            max-width: 90%;
+            width: 400px;
+            transform: translateY(-30px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        body.dark-mode-active .modal-content {
+            background-color: #2d3748;
+            color: #e2e8f0;
+        }
+
+        .modal-message {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .modal-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+
+        .modal-button:hover {
+            background-color: #45a049;
+        }
+
+        .modal-button.restart {
+            background-color: #f56565;
+        }
+        .modal-button.restart:hover {
+            background-color: #e53e3e;
+        }
+        .modal-button.next-level {
+             background-color: #4299e1;
+        }
+        .modal-button.next-level:hover {
+            background-color: #3182ce;
+        }
+
+        /* Animation Styles */
+        @keyframes superExcitedAnimation {
+            0% { transform: scale(1); opacity: 1; box-shadow: 0 0 10px rgba(0,0,0,0.3); }
+            25% { transform: scale(1.05) rotate(2deg); opacity: 0.8; box-shadow: 0 0 30px rgba(0,255,255,0.7); }
+            50% { transform: scale(1); opacity: 1; box-shadow: 0 0 10px rgba(0,0,0,0.3); }
+            75% { transform: scale(1.05) rotate(-2deg); opacity: 0.8; box-shadow: 0 0 30px rgba(255,0,255,0.7); }
+            100% { transform: scale(1); opacity: 1; box-shadow: 0 0 10px rgba(0,0,0,0.3); }
+        }
+
+        @keyframes smallAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .game-container.super-excited-animation {
+            animation: superExcitedAnimation 1s ease-in-out;
+        }
+
+        .game-container.small-animation {
+            animation: smallAnimation 0.5s ease-in-out;
+        }

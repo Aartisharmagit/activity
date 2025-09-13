@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candy Crush Game</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CSS for basic UI styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+   
+</head>
+<body>
+    <div class="game-container" id="gameContainer">
+        <h1 id="gameTitle" class="text-3xl font-bold text-center text-gray-800 mb-4">कैंडी क्रश</h1>
+        <div class="game-info">
+            <div id="levelText">लेवल: <span id="currentLevelDisplay">1</span></div>
+            <div id="scoreText">स्कोर: <span id="score">0</span> / <span id="targetScoreDisplay">0</span></div>
+            <div id="movesText">चालें: <span id="movesLeftDisplay">0</span></div>
+        </div>
+        <div id="game-grid" class="game-grid">
+            <!-- कैंडीज जावास्क्रिप्ट द्वारा यहां गतिशील रूप से डाली जाएंगी -->
+        </div>
+        <div class="button-group">
+            <button id="reset-button" class="reset-button">गेम रीसेट करें</button>
+            <button id="darkModeToggle" class="dark-mode-button">डार्क मोड</button>
+            <button id="languageToggle" class="language-button">English</button>
+        </div>
+    </div>
+
+    <!-- Level Complete/Game Over Modal -->
+    <div id="gameModalOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <p id="modalMessage" class="modal-message"></p>
+            <button id="modalActionButton" class="modal-button"></button>
+        </div>
+    </div>
+<script src="js.js"></script>
+    </body>
+</html>
