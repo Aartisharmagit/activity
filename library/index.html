@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>My Dashboard</title>
+</head>
+<body>
+    <section class="container">
+        <div class="topbar">
+            <div class="logo">
+                <h2>Brand</h2>
+            </div>
+            <div class="search">
+                <input type="text" id="search" placeholder="Search">
+                <label for="search"><i class="fas fa-search"></i></label>
+            </div>
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="user">
+                <img src="logo.png" alt="User Profile">
+            </div>
+        </div>
+    </section>
+    <section class="sidebar">
+        <ul>
+            <li><a href="#"><i class="fas fa-th-large"></i><div>Dashboard</div></a></li>
+            <li><a href="#"><i class="fas fa-user-graduate"></i><div>Students</div></a></li>
+            <li><a href="#"><i class="fas fa-chalkboard-teacher"></i><div>Teachers</div></a></li>
+            <li><a href="#"><i class="fas fa-users"></i><div>Employeers</div></a></li>
+            <li><a href="#"><i class="fas fa-chart-bar"></i><div>Analytics</div></a></li>
+            <li><a href="#"><i class="fas fa-hand-holding-usd"></i><div>Earnings</div></a></li>
+            <li><a href="#"><i class="fas fa-cog"></i><div>Settings</div></a></li>
+            <li><a href="#"><i class="fas fa-question"></i><div>Help</div></a></li>
+        </ul>
+    </section>
+    <section class="main">
+        <div class="cards">
+            <div class="card">
+                <div class="card-content">
+                    <div class="number">1217</div>
+                    <div class="card-name">Students</div>
+                </div>
+                <div class="icon-box">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="number">42</div>
+                    <div class="card-name"><b>Teachers</b></div>
+                </div>
+                <div class="icon-box">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="number">68</div>
+                    <div class="card-name">Employeers</div>
+                </div>
+                <div class="icon-box">
+                    <i class="fas fa-users"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="number">4500</div>
+                    <div class="card-name">Earnings</div>
+                </div>
+                <div class="icon-box">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+            </div>
+        </div>
+        <div>
+             <h2>Earnings(past 12  Months)</h2>
+            <div class="chart-container">
+                <div class="bar-container">
+                    <div class="bar" data-value="30"></div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar" data-value="120"></div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar" data-value="60"></div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar" data-value="10"></div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar" data-value="70"></div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar" data-value="80"></div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar" data-value="120"></div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar" data-value="20"></div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar" data-value="90"></div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar" data-value="80"></div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar" data-value="40"></div>
+                </div>
+            </div>
+                    <div class="stage"></div>
+                    <section class="labels">
+                     <b><div> January</div></b>
+                     <b><div> Ferbruary</div></b>
+                     <b><div> March</div></b>
+                     <b><div> April</div></b>
+                     <b><div> May</div></b>
+                     <b><div> June</div></b>
+                     <b><div> July</div></b>
+                     <b><div> August</div></b>
+                     <b><div> Sepetmber</div></b>
+                     <b><div> October</div></b>
+                     <b><div> November</div></b>
+                     <b><div> December</div></b>
+                  </section>
+            </div>
+            <div class="chart">
+                <h2>Employeers</h2>
+                <div class="chart-container">
+                    <svg class="line-chart" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0" y1="10" x2="200" y2="10" stroke="#e0e0e0" stroke-width="0.5" />
+                        <line x1="0" y1="20" x2="200" y2="20" stroke="#e0e0e0" stroke-width="0.5" />
+                        <line x1="0" y1="30" x2="200" y2="30" stroke="#e0e0e0" stroke-width="0.5" />
+                        <line x1="0" y1="40" x2="200" y2="40" stroke="#e0e0e0" stroke-width="0.5" />
+                        <line x1="0" y1="50" x2="200" y2="50" stroke="#e0e0e0" stroke-width="0.5" />
+                        <line x1="0" y1="60" x2="200" y2="60" stroke="#e0e0e0" stroke-width="0.5" />
+                        <line x1="0" y1="70" x2="200" y2="70" stroke="#e0e0e0" stroke-width="0.5" />
+                        <line x1="0" y1="80" x2="200" y2="80" stroke="#e0e0e0" stroke-width="0.5" />
+                        <line x1="0" y1="90" x2="200" y2="90" stroke="#e0e0e0" stroke-width="0.5" />
+                        <polyline points="10,80 40,90 70,50 100,20 130,60 160,80 200,30" 
+                        fill="none" stroke="#2196f3" stroke-width="2" />
+                        <circle cx="10" cy="80" r="2" fill="#2196f3" />
+                        <text x="10" y="75" font-size="10" fill="#2196f3">68</text>
+                        <circle cx="40" cy="90" r="2" fill="#2196f3" />
+                        <text x="40" y="85" font-size="10" fill="#2196f3">30</text>
+                        <circle cx="70" cy="50" r="2" fill="#2196f3" />
+                        <text x="70" y="45" font-size="10" fill="#2196f3">89</text>
+                        <circle cx="100" cy="20" r="2" fill="#2196f3" />
+                        <text x="100" y="15" font-size="10" fill="#2196f3">98</text>
+                        <circle cx="130" cy="60" r="2" fill="#2196f3" />
+                        <text x="130" y="55" font-size="10" fill="#2196f3">70</text>
+                        <circle cx="160" cy="80" r="2" fill="#2196f3" />
+                        <text x="160" y="75" font-size="10" fill="#2196f3">30</text>
+                        <circle cx="200" cy="30" r="2" fill="#2196f3" />
+                        <text x="200" y="25" font-size="10" fill="#2196f3">50</text>
+                    </svg>
+                          </div>
+                    <div class="stage"></div>
+                    <section class="labels">
+                     <b><div> January</div></b>
+                     <b><div> Ferbruary</div></b>
+                     <b><div> March</div></b>
+                     <b><div> April</div></b>
+                     <b><div> May</div></b>
+                     <b><div> June</div></b>
+                     <b><div> July</div></b>
+                     <b><div> August</div></b>
+                     <b><div> Sepetmber</div></b>
+                     <b><div> October</div></b>
+                     <b><div> November</div></b>
+                     <b><div> December</div></b>
+                  </section>
+            </div>
+           
+                </div>
+            </div>
+        </section>
+    </section>
+</body>
+</html>

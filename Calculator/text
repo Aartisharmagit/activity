@@ -1,0 +1,20 @@
+# # foo = fn x ->
+# #   1 + x
+# #   end
+# #   foo.(1)
+
+# #     demodule factorial do
+# #   def calculate(n)when is_integer(n)do
+# #   if n <= 1 do
+# #   1
+# #   else
+# #   n * calculate(n-1)
+# #      end 
+# #    end
+# #   end
+
+
+
+# a = [1, 2, 3, 4, 5]
+# doubleit= fn x-> x*2 end
+# Enumerator.map(a, doubleit)

@@ -1,0 +1,228 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.topbar {
+    position: fixed;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 10fr 0.4fr 1fr;
+    align-items: center;
+    z-index: 1;
+}
+.logo h2 {
+    color: hsl(251, 52%, 44%);
+    font-size: 2rem;
+}
+.search {
+    position: relative;
+    justify-self: center;
+    width: 250px;
+}
+.search input {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+.search i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    cursor: pointer;
+}
+
+.user {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.user img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.sidebar {
+    position: fixed;
+    top: 60px;
+    width: 260px;
+    height: calc(100vh - 60px);
+    background: hsl(243, 77%, 32%);
+    overflow-x: hidden;
+}
+.sidebar ul {
+    margin-top: 20px;
+    padding: 0;
+}
+.sidebar ul li {
+    list-style: none;
+}
+.sidebar ul li a {
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.sidebar ul li a i {
+    min-width: 60px;
+    font-size: 24px;
+    text-align: center;
+}
+.main {
+    position: absolute;
+    top: 60px;
+    left: 260px;
+    width: calc(100% - 260px);
+    min-height: calc(100vh - 60px);
+    background: #fff;
+}
+.cards {
+    width: 100%;
+    padding: 35px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+.card {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+.number {
+    font-size: 35px;
+    font-weight: 500;
+    color: #1f9a5e;
+}
+.card-name {
+    color: #888;
+    font-weight: 600;
+}
+.icon-box i {
+    font-size: 45px;
+    color: #1106a9;
+}
+.chart-container {
+    height: 500px;
+    width: 90%;
+    max-width: 900px;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    background: #dacece;
+    padding: 20px;
+    border: 1px solid hwb(0 74% 21%);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.bar {
+    flex: 1;
+    position: relative;
+    background-color: #9a0937;
+    text-align: center;
+    color: rgb(224, 6, 6);
+    font-size: 14px;
+    border-radius: 5px 5px 0 0;
+}
+.bar::after {
+    content: attr(data-value) '%';
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #333;
+    font-size: 12px;
+}
+.bar-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 300px;
+}
+.bar[data-value="120"] {
+    height: 120%;
+}
+.bar[data-value="90"] {
+    height: 90%;
+}
+.bar[data-value="80"] {
+    height: 80%;
+}
+.bar[data-value="70"] {
+    height: 70%;
+}
+.bar[data-value="60"] {
+    height: 60%;
+}
+.bar[data-value="40"] {
+    height: 40%;
+}
+.bar[data-value="30"] {
+    height: 30%;
+}
+.bar[data-value="20"] {
+    height: 20%;
+}
+.bar[data-value="10"] {
+    height: 10%;
+}
+.line-chart {
+    width: 100%;
+    height: 200px;
+}
+h2{
+    color: #7a0e0e;
+    margin-bottom: 10px;
+}
+.line-chart {
+    width: 100%;
+    height: auto;
+    background-color: #f9f9f9; 
+    border: 1px solid #ccc;   
+    margin: 20px 0;           
+}
+.line-chart line {
+    stroke: #e0e0e0;          
+    stroke-width: 0.5;
+}
+.line-chart polyline {
+    stroke: #2196f3;          
+    stroke-width: 2;
+    fill: none;               
+}
+.line-chart circle {
+    fill: #2196f3;            
+}
+.line-chart text {
+    font-family: Arial, sans-serif; 
+    font-size: 10px;               
+    fill: #333;                    
+}
+.labels div {
+    display: inline-block;
+    margin: 10px;
+    font-weight: bold;
+}
